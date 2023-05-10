@@ -67,5 +67,5 @@ function createCard(tenis) {
             </a>
           </div>
         </div> <!--card-->
-      </div> <!--col-->` //template literals
+      </div> <!--col-->`
 }
