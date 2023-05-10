@@ -1,21 +1,31 @@
 document.querySelector("#salvar").addEventListener("click", cadastrar)
 
 function cadastrar() {
-    const titulo = document.querySelector('#titulo').value
-    const descricao = document.querySelector('#descricao').value
-    const categoria = document.querySelector('#categoria').value
+    const modelo = document.querySelector('#modelo').value
+    const linkft = document.querySelector('#linkft').value
+    const retail = document.querySelector('#retail').value
+    const tamanho = document.querySelector('#tamanho').value
+    const condicao = document.querySelector('#condicao').value
+    const marca = document.querySelector('#marca').value
     const modal = bootstrap.Modal.getInstance(document.querySelector("#exampleModal"))
 
-    const tarefa = {
-        titulo,
-        descricao,
-        categoria,
+    const tenis = {
+        modelo,
+        linkft,
+        retail,
+        tamanho,
+        condicao,
+        marca,
     }
 
-    if (!validar(tarefa.titulo, document.querySelector("#titulo"))) return
-    if (!validar(tarefa.descricao, document.querySelector("#descricao"))) return
-
-    document.querySelector("#tarefas").innerHTML += createCard(tarefa)
+    if (!validar(tenis.modelo, document.querySelector("#modelo"))) return
+    if (!validar(tenis.linkft, document.querySelector("#linkft"))) return
+    if (!validar(tenis.retail, document.querySelector("#retail"))) return
+    if (!validar(tenis.tamanho, document.querySelector("#tamanho"))) return
+    if (!validar(tenis.condicao, document.querySelector("#condicao"))) return
+    if (!validar(tenis.marca, document.querySelector("#marca"))) return
+    
+    document.querySelector("#tenis").innerHTML += createCard(tenis)
 
     modal.hide()
 
@@ -37,46 +47,25 @@ function apagar(botao){
     botao.parentNode.parentNode.parentNode.remove()
 }
 
-function createCard(tarefa) {
+function createCard(tenis) {
     return `
     <div class="col-lg-3 col-md-6 col-12">
         <div class="card">
           <div class="card-header">
-            ${tarefa.titulo}
+            ${tenis.modelo}
           </div>
+          <img src="${tenis.linkft}" class="card-img-top" alt="foto do tenis">
           <div class="card-body">
-            <p class="card-text">${tarefa.descricao}</p>
+            <p class="card-text">Retail: R$${tenis.retail}</p>
+            <p class="card-text">Tamanho: ${tenis.tamanho}</p>
+            <p class="card-text">Condição: ${tenis.condicao}</p>
             <p>
-              <span class="badge text-bg-danger">${tarefa.categoria}</span>
+              <span class="badge text-bg-dark">${tenis.marca}</span>
             </p>
-            <a href="#" class="btn btn-success" title="marcar como concluida">
-              <i class="bi bi-check-lg"></i>
-            </a>
-            <a onClick="apagar(this)" href="#" class="btn btn-danger" title="apagar tarefa">
+            <a onClick="apagar(this)" href="#" class="btn btn-danger" title="apagar tenis">
               <i class="bi bi-trash"></i>
             </a>
           </div>
         </div> <!--card-->
       </div> <!--col-->` //template literals
 }
-
-/*<div class="col-lg-3 col-md-6 col-12">
-
-<div class="card">
-<div class="card-header">
-    ${tenis.nome}
-</div>
-<img src="https://imgnike-a.akamaihd.net/768x768/02621451.jpg" class="card-img-top" alt="foto do tenis">
-<div class="card-body">
-    <p class="card-text">${tenis.retail}</p>
-    <p class="card-text">${tenis.tamanho}</p>
-    <p class="card-text">${tenis.condicao}</p>
-    <p>
-        <span class="badge text-bg-dark">${tenis.marca}</span>
-    </p>
-    <a href="#" class="btn btn-danger" title="apagar tarefa">
-        <i class="bi bi-trash"></i>
-    </a>
-</div>
-</div> <!--card-->
-</div><!--col-->"

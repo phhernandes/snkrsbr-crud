@@ -28,16 +28,16 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Catalogo
+                            Coleção
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Em estoque</a></li>
-                            <li><a class="dropdown-item" href="#">Vendidos</a></li>
+                            <li><a class="dropdown-item" href="#">Meus Tênis</a></li>
+                            <li><a class="dropdown-item" href="#">Tênis Passados</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Cadastrar Modelo</a>
+                                <a class="dropdown-item" href="#">Cadastrar Tênis</a>
                             </li>
                         </ul>
                     </li>
@@ -57,9 +57,9 @@
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="bi bi-plus-lg"></i>
-            Cadastrar Modelo
+            Cadastrar Tênis
         </button>
-        <div class="row mt-3">
+        <div id="tenis" class="row mt-3">
             <div class="col-lg-3 col-md-6 col-12">
 
                 <div class="card">
@@ -74,7 +74,7 @@
                         <p>
                             <span class="badge text-bg-dark">Nike</span>
                         </p>
-                        <a href="#" class="btn btn-danger" title="apagar tarefa">
+                        <a href="#" class="btn btn-danger" title="apagar tenis">
                             <i class="bi bi-trash"></i>
                         </a>
                     </div>
@@ -94,7 +94,7 @@
                         <p>
                             <span class="badge text-bg-dark">Vans</span>
                         </p>
-                        <a href="#" class="btn btn-danger" title="apagar tarefa">
+                        <a href="#" class="btn btn-danger" title="apagar tenis">
                             <i class="bi bi-trash"></i>
                         </a>
                     </div>
@@ -114,7 +114,7 @@
                         <p>
                             <span class="badge text-bg-dark">Adidas</span>
                         </p>
-                        <a href="#" class="btn btn-danger" title="apagar tarefa">
+                        <a onClick="apagar(this)" href="#" class="btn btn-danger" title="apagar tenis">
                             <i class="bi bi-trash"></i>
                         </a>
                     </div>
@@ -134,7 +134,7 @@
                         <p>
                             <span class="badge text-bg-dark">Nike</span>
                         </p>
-                        <a href="#" class="btn btn-danger" title="apagar tarefa">
+                        <a href="#" class="btn btn-danger" title="apagar tenis">
                             <i class="bi bi-trash"></i>
                         </a>
                     </div>
@@ -150,7 +150,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar tenis</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Tênis</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -158,6 +158,10 @@
                         <div class="mb-3">
                             <label for="modelo" class="form-label">Nome do Modelo:</label>
                             <input type="text" class="form-control" id="modelo" aria-describedby="modelo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="linkft" class="form-label">Link da Foto:</label>
+                            <input type="text" class="form-control" id="linkft">
                         </div>
                         <div class="mb-3">
                             <label for="retail" class="form-label">Retail:</label>
@@ -169,17 +173,17 @@
                         </div>
                         <div class="mb-3 ">
                             <label for="condicao" class="form-label">Condição:</label>
-                            <select class="form-select" aria-label="condicao">
+                            <select class="form-select" id="condicao" aria-label="condicao">
                                 <option selected>-</option>
-                                <option>1</option>
-                                <option>1,5</option>
-                                <option>2</option>
-                                <option>2,5</option>
-                                <option>3</option>
-                                <option>3,5</option>
-                                <option>4</option>
-                                <option>4,5</option>
-                                <option>5</option>
+                                <option >1</option>
+                                <option >1,5</option>
+                                <option >2</option>
+                                <option >2,5</option>
+                                <option >3</option>
+                                <option >3,5</option>
+                                <option >4</option>
+                                <option >4,5</option>
+                                <option >5</option>
                                 <option>5,5</option>
                                 <option>6</option>
                                 <option>6,5</option>
@@ -195,7 +199,7 @@
                         </div>
                         <div class="mb-3 ">
                             <label for="marca" class="form-label">Marca:</label>
-                            <select class="form-select" aria-label="Marca">
+                            <select class="form-select" id="marca" aria-label="marca">
                                 <option selected>-</option>
                                 <option>Nike</option>
                                 <option>Jordan</option>
@@ -209,7 +213,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Cadastrar</button>
+                    <button id="salvar" type="button" class="btn btn-primary">Cadastrar</button>
                 </div>
             </div>
         </div>
