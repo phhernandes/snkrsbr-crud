@@ -49,7 +49,7 @@ function apagar(botao){
 
 function createCard(tenis) {
     return `
-    <div class="col-lg-3 col-md-6 col-9-mx-auto">
+    <div class="col-lg-3 col-md-6 col-9 mx-auto">
         <div class="card mb-3">
           <div class="card-header">
             ${tenis.modelo}
