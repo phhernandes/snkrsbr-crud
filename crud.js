@@ -42,15 +42,15 @@ function validar(valor, campo) {
     return true
 
 }
-
 function apagar(botao){
-    botao.parentNode.parentNode.parentNode.remove()
+  botao.parentNode.parentNode.parentNode.remove()
 }
+
 
 function createCard(tenis) {
     return `
-    <div class="col-lg-3 col-md-6 col-12">
-        <div class="card">
+    <div class="col-lg-3 col-md-6 col-9-mx-auto">
+        <div class="card mb-3">
           <div class="card-header">
             ${tenis.modelo}
           </div>
