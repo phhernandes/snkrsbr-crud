@@ -3,7 +3,7 @@ document.querySelector("#salvar").addEventListener("click", cadastrar)
 let teniss = []
 
 window.addEventListener("load", () => {
-  teniss = JSON.parse(localStorage.getItem("teniss")) || []
+  teniss = JSON.parse(localStorage.getItem("tenis")) || []
   atualizar()
 })
 
@@ -17,7 +17,7 @@ document.querySelector("#busca").addEventListener("keyup", () => {
 
 function filtrar(teniss) {
   document.querySelector("#tenis").innerHTML =""
-  teniss.forEach((tarefa) => {
+  teniss.forEach((tenis) => {
   document.querySelector("#tenis").innerHTML += createCard(tenis)
   })
 }
