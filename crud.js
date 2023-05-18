@@ -1,5 +1,35 @@
 document.querySelector("#salvar").addEventListener("click", cadastrar)
 
+let teniss = []
+
+window.addEventListener("load", () => {
+  teniss = JSON.parse(localStorage.getItem("teniss")) || []
+  atualizar()
+})
+
+document.querySelector("#busca").addEventListener("keyup", () => {
+  let busca = document.querySelector("#busca").value
+  let tenissFiltradas = teniss.filter ((tenis) => {
+    return tenis.modelo.toLowerCase().includes(busca)
+  })
+  filtrar(tenissFiltradas)
+})
+
+function filtrar(teniss) {
+  document.querySelector("#tenis").innerHTML =""
+  teniss.forEach((tarefa) => {
+  document.querySelector("#tenis").innerHTML += createCard(tenis)
+  })
+}
+
+function atualizar() {
+  document.querySelector("#tenis").innerHTML =""
+  localStorage.setItem("teniss", JSON.stringify(teniss))
+  teniss.forEach((tenis) => {
+  document.querySelector("#tenis").innerHTML += createCard(tenis)
+  })
+}
+
 function cadastrar() {
     const modelo = document.querySelector('#modelo').value
     const linkft = document.querySelector('#linkft').value
@@ -10,6 +40,7 @@ function cadastrar() {
     const modal = bootstrap.Modal.getInstance(document.querySelector("#exampleModal"))
 
     const tenis = {
+      id: Date.now(),
         modelo,
         linkft,
         retail,
@@ -25,7 +56,9 @@ function cadastrar() {
     if (!validar(tenis.condicao, document.querySelector("#condicao"))) return
     if (!validar(tenis.marca, document.querySelector("#marca"))) return
     
-    document.querySelector("#tenis").innerHTML += createCard(tenis)
+    teniss.push(tenis)
+
+    atualizar()
 
     modal.hide()
 
@@ -42,8 +75,11 @@ function validar(valor, campo) {
     return true
 
 }
-function apagar(botao){
-  botao.parentNode.parentNode.parentNode.remove()
+function apagar(id){
+  teniss = teniss.filter((tenis) => {
+    return tenis.id != id
+  })
+  atualizar()
 }
 
 
@@ -60,9 +96,10 @@ function createCard(tenis) {
             <p class="card-text">Tamanho: ${tenis.tamanho}</p>
             <p class="card-text">Condição: ${tenis.condicao}</p>
             <p>
-              <span class="badge text-bg-dark">${tenis.marca}</span>
+              <span class="badge" style="background: linear-gradient(90deg, rgba(63,160,171,1) 0%, rgba(207,102,182,1) 100%);">${tenis.marca}</span>
             </p>
-            <a onClick="apagar(this)" href="#" class="btn btn-danger" title="apagar tenis">
+            <a onClick="apagar(${tenis.id})" href="#" class="btn btn-danger" title="apagar tenis" style="background: rgb(63,160,171);
+            background: linear-gradient(90deg, rgba(63,160,171,1) 0%, rgba(207,102,182,1) 100%);color: #fff; border-width: inherit;">
               <i class="bi bi-trash"></i>
             </a>
           </div>
