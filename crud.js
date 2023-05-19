@@ -24,7 +24,7 @@ function filtrar(teniss) {
 
 function atualizar() {
   document.querySelector("#tenis").innerHTML =""
-  localStorage.setItem("teniss", JSON.stringify(teniss))
+  localStorage.setItem("tenis", JSON.stringify(teniss))
   teniss.forEach((tenis) => {
   document.querySelector("#tenis").innerHTML += createCard(tenis)
   })
